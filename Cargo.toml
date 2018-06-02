@@ -1,9 +1,9 @@
 [package]
 name = "statics"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Russell Hay <me@russellhay.com>"]
 description = "A library for calculating static forces on free body diagrams"
-repository = "https://github.com/stainlessio/statics"
+repository = "https://github.com/stainlessio/rust-statics"
 categories = ["algorithms", "science", "simulation"]
 keywords = ["statics", "force", "free-body", "structural-design"]
 license = "MIT"
