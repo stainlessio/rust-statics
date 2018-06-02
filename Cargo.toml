@@ -1,0 +1,9 @@
+[package]
+name = "statics"
+version = "0.1.0"
+authors = ["Russell Hay <me@russellhay.com>"]
+
+[dependencies]
+
+[dev-dependencies]
+cargo-watch = "*"
