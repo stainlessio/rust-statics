@@ -1,5 +1,3 @@
-use std::f64::consts::PI;
-
 #[derive(Debug)]
 pub enum Angle {
     Rad(f64),
@@ -10,14 +8,14 @@ impl Angle {
     pub fn as_rad(&self) -> Self {
         match self {
             Angle::Rad(r) => Angle::Rad(*r),
-            Angle::Deg(d) => Angle::Rad(d * PI / 180.0)
+            Angle::Deg(d) => Angle::Rad(d.to_radians())
         }
     }
 
     pub fn as_deg(&self) -> Self {
         match self {
             Angle::Deg(d) => Angle::Deg(*d),
-            Angle::Rad(r) => Angle::Deg(r / PI * 180.0)
+            Angle::Rad(r) => Angle::Deg(r.to_degrees())
         }
     }
 }
@@ -32,15 +30,20 @@ impl From<Angle> for f64 {
 }
 
 impl PartialEq<Angle> for Angle {
+
     fn eq(&self, rhs : &Angle) -> bool {
+        fn is_approx_eq(l: &f64, r: &f64) -> bool {
+            (l-r).abs() < 1e-10
+        }
+
         match self {
             Angle::Rad(l) => match rhs {
-                Angle::Rad(r) => l == r,
-                Angle::Deg(_) => *l == f64::from(rhs.as_rad())
+                Angle::Rad(r) => is_approx_eq(l, r),
+                Angle::Deg(_) => is_approx_eq(l, &f64::from(rhs.as_rad()))
             },
             Angle::Deg(l) => match rhs {
-                Angle::Deg(r) => l == r,
-                Angle::Rad(_) => *l == f64::from(rhs.as_deg())
+                Angle::Deg(r) => is_approx_eq(l, r),
+                Angle::Rad(_) => is_approx_eq(l, &f64::from(rhs.as_deg()))
             }
         }
     }
@@ -49,6 +52,7 @@ impl PartialEq<Angle> for Angle {
 #[cfg(test)]
 mod test {
     use super::*;
+    use std::f64::consts::PI;
 
     #[test]
     fn angle_1deg_is_pi_by_180() {

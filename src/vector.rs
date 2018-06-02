@@ -29,10 +29,16 @@ impl Vector {
     }
 
     pub fn vertical(&self) -> Vector {
-        // calculate vertical component
         Vector {
             _mag: self._mag * f64::from(self._angle.as_rad()).sin(),
             _angle: Angle::Deg(0.0),
+        }
+    }
+
+    pub fn horizontal(&self) -> Vector {
+        Vector {
+            _mag: self._mag * f64::from(self._angle.as_rad()).cos(),
+            _angle: Angle::Deg(90.0),
         }
     }
 }
@@ -40,6 +46,20 @@ impl Vector {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use std::ops::Sub;
+    use std::fmt::Debug;
+
+    fn assert_approx_eq<T>(l : T, r : T, sigma : T::Output)
+    where T : Sub + PartialOrd + Debug + Copy,
+    T::Output : Debug + PartialOrd {
+        let diff = if l < r {
+            r - l 
+        } else {
+            l - r
+        };
+        println!("Diff {:?}", diff);
+        assert!(diff < sigma, format!("{:?} != {:?}", l, r));
+    }
 
     #[test]
     fn vector_unit_has_magnitude_of_one_and_angle_of_zero() {
@@ -64,13 +84,16 @@ mod tests {
     fn vector_has_vertical_component() {
         let vector = Vector::from_mag_and_angle(500.0, Angle::Deg(20.0));
         let vert = vector.vertical();
-        assert_eq!(vert.mag(), 171.0);
+        assert_approx_eq(vert.mag(), 171.0, 1e-1);
         assert_eq!(f64::from(vert.angle().as_deg()), 0.0);
     }
 
     #[test]
     fn vector_has_horizontal_component() {
-        assert!(false, "TODO");
+        let vector = Vector::from_mag_and_angle(500.0, Angle::Deg(20.0));
+        let horiz = vector.horizontal();
+        assert_approx_eq(horiz.mag(), 469.8, 1e-1);
+        assert_eq!(f64::from(horiz.angle().as_deg()), 90.0);
     }
 
     #[test]
