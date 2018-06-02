@@ -1,10 +1,22 @@
+/// Type that represents an angle in either Degrees or Radians.
+/// 
+/// Conversion methods are provided.
+/// ```rust
+/// use statics::Angle;
+/// use std::f64::consts::PI;
+/// let deg_angle = Angle::Deg(180.0);
+/// assert_eq!(f64::from(deg_angle.as_rad()), PI);
+/// ```
 #[derive(Debug)]
 pub enum Angle {
+    /// Radians
     Rad(f64),
+    /// Degrees
     Deg(f64)
 }
 
 impl Angle {
+    /// returns the angle as a radian angle
     pub fn as_rad(&self) -> Self {
         match self {
             Angle::Rad(r) => Angle::Rad(*r),
@@ -12,6 +24,7 @@ impl Angle {
         }
     }
 
+    /// returns the angle as a degree angle
     pub fn as_deg(&self) -> Self {
         match self {
             Angle::Deg(d) => Angle::Deg(*d),
