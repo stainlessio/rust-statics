@@ -2,8 +2,16 @@
 name = "statics"
 version = "0.1.0"
 authors = ["Russell Hay <me@russellhay.com>"]
+description = "A library for calculating static forces on free body diagrams"
+repository = "https://github.com/stainlessio/statics"
+categories = ["algorithms", "science", "simulation"]
+keywords = ["statics", "force", "free-body", "structural-design"]
+license = "MIT"
+
+[badges]
+maintenance = { status = "actively-developed"}
 
 [dependencies]
 
 [dev-dependencies]
-cargo-watch = "*"
+cargo-watch = "^6"
