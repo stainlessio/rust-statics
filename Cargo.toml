@@ -7,6 +7,7 @@ repository = "https://github.com/stainlessio/rust-statics"
 categories = ["algorithms", "science", "simulation"]
 keywords = ["statics", "force", "free-body", "structural-design"]
 license = "MIT"
+readme = "README.md"
 
 [badges]
 maintenance = { status = "actively-developed"}

@@ -1,0 +1,5 @@
+![](https://img.shields.io/crates/v/statics.svg)
+![](https://img.shields.io/crates/d/statics.svg)
+![](https://img.shields.io/github/issues-pr/stainlessio/rust-statics.svg)
+![](https://img.shields.io/codecov/c/github/stainlessio/rust-statics.svg)
+![](https://img.shields.io/travis/stainlessio/rust-statics.svg)
