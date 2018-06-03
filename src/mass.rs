@@ -61,12 +61,12 @@ mod test {
     #[test]
     fn one_lb_is_about_453_grams() {
         let mass = Mass::Lb(1.0);
-        assert_approx_eq(f64::from(mass.as_gram()), 453.0, 1.0);
+        assert_approx_eq(f64::from(mass.as_gram()), 453.0, &1.0);
     }
 
     #[test]
     fn one_kg_is_about_2_2_pounds() {
         let mass = Mass::G(1000.0);
-        assert_approx_eq(f64::from(mass.as_lb()), 2.2, 1e-1);
+        assert_approx_eq(f64::from(mass.as_lb()), 2.2, &1e-1);
     }
 }
