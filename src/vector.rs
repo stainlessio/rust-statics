@@ -29,10 +29,7 @@ impl Vector {
 
     /// Factor based on a magnitude and angle
     pub fn from_mag_and_angle(mag: Mass, angle: Angle) -> Self {
-        Self {
-            mag,
-            angle,
-        }
+        Self { mag, angle }
     }
 
     pub fn mag(&self) -> Mass {
