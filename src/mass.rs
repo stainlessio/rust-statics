@@ -17,7 +17,7 @@ impl Mass {
     pub fn as_lb(&self) -> Mass {
         Mass::Lb(match self {
             Mass::Lb(l) => *l,
-            Mass::G(g) => *g * 0.00220462
+            Mass::G(g) => *g * 0.002_204_62
         })
     }
 }
