@@ -25,15 +25,14 @@ matrix:
       before_script:
         - cargo install cargo-update || ehco "cargo-update already installed"
         - cargo install cargo-travis || echo "cargo-travis already installed"
-        - cargo install-update -a
+        - cargo install-update -a --force
       script:
         - |
           cargo build    --verbose &&
           cargo coverage --verbose &&
           bash <(curl -s https://codecov.io/bash) -s target/kcov
         - |
-          cargo doc --verbose &&
-          echo cargo doc-upload
+          cargo doc --verbose 
       addons: # required for kcov
         apt:
           packages:
