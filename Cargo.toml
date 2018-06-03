@@ -15,3 +15,4 @@ maintenance = { status = "actively-developed"}
 
 [dev-dependencies]
 cargo-watch = "^6"
+extra-asserts = "^0.1"

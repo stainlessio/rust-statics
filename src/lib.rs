@@ -7,9 +7,14 @@
 
 mod angle;
 mod vector;
+mod mass;
 
 pub use vector::Vector;
 pub use angle::Angle;
+pub use mass::Mass;
+
+#[cfg(test)]
+extern crate extra_asserts;
 
 #[cfg(test)]
 mod tests {
