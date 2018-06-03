@@ -3,21 +3,21 @@ use std::ops::{Mul, Sub};
 #[derive(Debug, Clone, Copy, PartialOrd, PartialEq)]
 pub enum Mass {
     Lb(f64),
-    G(f64)
+    G(f64),
 }
 
 impl Mass {
     pub fn as_gram(&self) -> Mass {
         Mass::G(match self {
             Mass::Lb(l) => *l * 453.59237,
-            Mass::G(g) => *g
+            Mass::G(g) => *g,
         })
     }
 
     pub fn as_lb(&self) -> Mass {
         Mass::Lb(match self {
             Mass::Lb(l) => *l,
-            Mass::G(g) => *g * 0.002_204_62
+            Mass::G(g) => *g * 0.002_204_62,
         })
     }
 }
@@ -25,10 +25,10 @@ impl Mass {
 impl Mul<f64> for Mass {
     type Output = Self;
 
-    fn mul(self, rhs : f64) -> Self {
+    fn mul(self, rhs: f64) -> Self {
         match self {
             Mass::Lb(lhs) => Mass::Lb(lhs * rhs),
-            Mass::G(lhs) => Mass::G(lhs * rhs)
+            Mass::G(lhs) => Mass::G(lhs * rhs),
         }
     }
 }
@@ -36,19 +36,19 @@ impl Mul<f64> for Mass {
 impl Sub for Mass {
     type Output = Self;
 
-    fn sub(self, rhs : Self) -> Self {
+    fn sub(self, rhs: Self) -> Self {
         match self {
             Mass::Lb(lhs) => Mass::Lb(lhs - f64::from(rhs.as_lb())),
-            Mass::G(lhs) => Mass::G(lhs - f64::from(rhs.as_gram()))
+            Mass::G(lhs) => Mass::G(lhs - f64::from(rhs.as_gram())),
         }
     }
 }
 
 impl From<Mass> for f64 {
-    fn from(m : Mass) -> f64 {
+    fn from(m: Mass) -> f64 {
         match m {
             Mass::G(g) => g,
-            Mass::Lb(l) => l
+            Mass::Lb(l) => l,
         }
     }
 }
