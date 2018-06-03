@@ -34,7 +34,7 @@ impl Angle {
 }
 
 impl From<Angle> for f64 {
-    fn from(t: Angle) -> f64 {
+    fn from(t: Angle) -> Self {
         match t {
             Angle::Rad(r) => r,
             Angle::Deg(d) => d,
@@ -43,7 +43,7 @@ impl From<Angle> for f64 {
 }
 
 impl PartialEq<Angle> for Angle {
-    fn eq(&self, rhs: &Angle) -> bool {
+    fn eq(&self, rhs: &Self) -> bool {
         fn is_approx_eq(l: &f64, r: &f64) -> bool {
             (l - r).abs() < 1e-10
         }

@@ -7,14 +7,14 @@ pub enum Mass {
 }
 
 impl Mass {
-    pub fn as_gram(&self) -> Mass {
+    pub fn as_gram(&self) -> Self {
         Mass::G(match self {
             Mass::Lb(l) => *l * 453.59237,
             Mass::G(g) => *g,
         })
     }
 
-    pub fn as_lb(&self) -> Mass {
+    pub fn as_lb(&self) -> Self {
         Mass::Lb(match self {
             Mass::Lb(l) => *l,
             Mass::G(g) => *g * 0.002_204_62,
@@ -45,7 +45,7 @@ impl Sub for Mass {
 }
 
 impl From<Mass> for f64 {
-    fn from(m: Mass) -> f64 {
+    fn from(m: Mass) -> Self {
         match m {
             Mass::G(g) => g,
             Mass::Lb(l) => l,

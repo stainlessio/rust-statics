@@ -1,4 +1,6 @@
 #![doc(issue_tracker_base_url = "https://github.com/stainlessio/statics/issues/")]
+#![cfg_attr(feature = "cargo-clippy", deny(clippy))]
+#![cfg_attr(feature = "cargo-clippy", deny(clippy_pedantic))]
 
 //! statics is a library that provides types for calculating static forces on free bodies.
 //!

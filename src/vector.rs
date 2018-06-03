@@ -14,48 +14,48 @@ use mass::Mass;
 /// The Vector also provides the ability to get the component forces (vertical and horizontal) which is
 /// useful for calculating composite forces.
 pub struct Vector {
-    _mag: Mass,
-    _angle: Angle,
+    mag: Mass,
+    angle: Angle,
 }
 
 impl Vector {
     /// A vector of magnitude 1, with angle 0deg
     pub fn unit() -> Self {
         Self {
-            _mag: Mass::Lb(1.0),
-            _angle: Angle::Deg(0.0),
+            mag: Mass::Lb(1.0),
+            angle: Angle::Deg(0.0),
         }
     }
 
     /// Factor based on a magnitude and angle
     pub fn from_mag_and_angle(mag: Mass, angle: Angle) -> Self {
         Self {
-            _mag: mag,
-            _angle: angle,
+            mag,
+            angle,
         }
     }
 
     pub fn mag(&self) -> Mass {
-        self._mag
+        self.mag
     }
 
     pub fn angle(&self) -> &Angle {
-        &self._angle
+        &self.angle
     }
 
     /// The vertical component of the Vector
-    pub fn vertical(&self) -> Vector {
-        Vector {
-            _mag: self._mag * f64::from(self._angle.as_rad()).sin(),
-            _angle: Angle::Deg(0.0),
+    pub fn vertical(&self) -> Self {
+        Self {
+            mag: self.mag * f64::from(self.angle.as_rad()).sin(),
+            angle: Angle::Deg(0.0),
         }
     }
 
     /// The horizontal component of the Vector
-    pub fn horizontal(&self) -> Vector {
-        Vector {
-            _mag: self._mag * f64::from(self._angle.as_rad()).cos(),
-            _angle: Angle::Deg(90.0),
+    pub fn horizontal(&self) -> Self {
+        Self {
+            mag: self.mag * f64::from(self.angle.as_rad()).cos(),
+            angle: Angle::Deg(90.0),
         }
     }
 }
